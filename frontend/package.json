@@ -1,0 +1,40 @@
+{
+  "name": "enterprise-erp-spa",
+  "version": "0.8.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "api:types": "openapi-typescript ../docs/openapi.json -o src/shared/api/generated.d.ts"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.66.0",
+    "lucide-react": "^1.71.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.18.7",
+    "recharts": "^3.0.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.1",
+    "@playwright/test": "^1.58.2",
+    "@tailwindcss/vite": "^4.1.0",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "jsdom": "^26.1.0",
+    "openapi-typescript": "^7.13.0",
+    "prettier": "^3.10.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "~5.8.3",
+    "vite": "^6.4.0",
+    "vitest": "^3.2.7"
+  }
+}

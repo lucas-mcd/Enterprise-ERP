@@ -1,0 +1,21 @@
+{
+  "release": "0.8.0",
+  "base": "7.0-final",
+  "features": [
+    "rotating-refresh-cookie",
+    "CRM-credit-pipeline",
+    "bank-reconciliation",
+    "cost-centers",
+    "real-alerts",
+    "editable-training",
+    "shared-sales-credit",
+    "supplier-directory",
+    "report-history",
+    "browser-journey"
+  ],
+  "runtime_guards": [
+    "safeFormatDate",
+    "ErrorBoundary",
+    "LockKeyhole import"
+  ]
+}

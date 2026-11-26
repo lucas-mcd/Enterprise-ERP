@@ -1,0 +1,89 @@
+name: quality
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: erp
+          POSTGRES_PASSWORD: ci_only
+          POSTGRES_DB: erp_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U erp -d erp_test"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      DATABASE_URL: postgresql+asyncpg://erp:ci_only@localhost:5432/erp_test
+      TEST_DATABASE_URL: postgresql+asyncpg://erp:ci_only@localhost:5432/erp_test
+      JWT_SECRET: ci-only-secret-with-at-least-32-characters
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: backend/requirements-dev.lock
+      - run: pip install -r requirements-dev.lock && pip install --no-deps -e .
+      - run: black --check src tests migrations
+      - run: flake8 src tests migrations
+      - run: mypy src
+      - run: alembic upgrade head && alembic check
+      - run: alembic downgrade base && alembic upgrade head
+      - run: pytest -q
+      - run: python ../scripts/export_openapi.py && git diff --exit-code -- ../docs/openapi.json
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run api:types && git diff --exit-code -- src/shared/api/generated.d.ts
+      - run: npm test
+      - run: npm run build
+  containers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cp .env.example .env
+      - run: docker compose config --quiet && docker compose build
+      - run: docker compose up -d --wait api worker beat frontend
+      - run: curl --fail http://localhost:8080/health/ready
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci && npx playwright install --with-deps chromium
+        working-directory: frontend
+      - name: Reproduzir venda com Chromium
+        shell: bash
+        run: |
+          export ERP_TEST_PASSWORD="$(openssl rand -hex 24)"
+          echo "::add-mask::$ERP_TEST_PASSWORD"
+          export SEED_ADMIN_PASSWORD="$ERP_TEST_PASSWORD"
+          export SEED_SALES_PASSWORD="$ERP_TEST_PASSWORD"
+          export SEED_FINANCE_PASSWORD="$ERP_TEST_PASSWORD"
+          seed=$(docker compose exec -T -e SEED_ADMIN_PASSWORD -e SEED_SALES_PASSWORD -e SEED_FINANCE_PASSWORD api python -m erp.shared.infrastructure.database.seed --training)
+          export ERP_TRAINING_TENANT=$(jq -er '.tenant_id' <<< "$seed")
+          cd frontend
+          npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-diagnostics
+          path: frontend/test-results
+          retention-days: 3
+      - if: always()
+        run: docker compose logs && docker compose down -v

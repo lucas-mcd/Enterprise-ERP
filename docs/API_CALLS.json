@@ -1,0 +1,343 @@
+[
+  {
+    "file": "src/modules/ecosystem/CockpitPage.tsx",
+    "line": 72,
+    "client": "request",
+    "path": "`/cockpit?source=${source}`",
+    "options": "{ signal }"
+  },
+  {
+    "file": "src/modules/ecosystem/EcosystemPage.tsx",
+    "line": 95,
+    "client": "request",
+    "path": "`${endpoint}?${params}`"
+  },
+  {
+    "file": "src/modules/ecosystem/EcosystemPage.tsx",
+    "line": 103,
+    "client": "request",
+    "path": "\"/governanca/usuarios\""
+  },
+  {
+    "file": "src/modules/ecosystem/EcosystemPage.tsx",
+    "line": 112,
+    "client": "request",
+    "path": "\"/fiscal/origens\""
+  },
+  {
+    "file": "src/modules/ecosystem/EnterprisePage.tsx",
+    "line": 70,
+    "client": "request",
+    "path": "`/${module}?${params}`",
+    "options": "{\n        signal,\n      }"
+  },
+  {
+    "file": "src/modules/ecosystem/EnterprisePage.tsx",
+    "line": 79,
+    "client": "request",
+    "path": "\"/ativos/responsaveis\""
+  },
+  {
+    "file": "src/modules/ecosystem/EnterprisePage.tsx",
+    "line": 92,
+    "client": "request",
+    "path": "remove\n          ? `/${module}/${row.id}?version=${row.version}`\n          : `/projetos/${row.id}/status`",
+    "options": "{\n          method: remove ? \"DELETE\" : \"PATCH\",\n          ...(remove\n            ? {}\n            : {\n                body: JSON.stringify({\n                  version: row.version,\n                  status:\n                    row.status === \"planejamento\" ? \"em_execucao\" : \"concluido\",\n                }),\n              }),\n        }"
+  },
+  {
+    "file": "src/modules/ecosystem/EnterprisePage.tsx",
+    "line": 561,
+    "client": "request",
+    "path": "`/${module}/${row.id}/${module === \"projetos\" ? \"historico\" : \"manutencoes\"}?page=${page}`"
+  },
+  {
+    "file": "src/modules/ecosystem/InsightsContent.tsx",
+    "line": 65,
+    "client": "request",
+    "path": "`/bi/${salesOnly ? \"vendas\" : \"overview\"}?${new URLSearchParams({ source, start_date: start, end_date: end })}`"
+  },
+  {
+    "file": "src/modules/ecosystem/InsightsContent.tsx",
+    "line": 72,
+    "client": "request",
+    "path": "\"/bi/orcamento\"",
+    "options": "{ method: \"PUT\", body: JSON.stringify(body) }"
+  },
+  {
+    "file": "src/modules/financeiro/FinancePage.tsx",
+    "line": 78,
+    "client": "request",
+    "path": "`/financeiro/lancamentos/${entryId}`"
+  },
+  {
+    "file": "src/modules/financeiro/api.ts",
+    "line": 22,
+    "client": "request",
+    "path": "`/financeiro/fluxo-caixa?${queryString(filters)}`",
+    "options": "{\n        signal,\n      }"
+  },
+  {
+    "file": "src/modules/financeiro/api.ts",
+    "line": 45,
+    "client": "request",
+    "path": "`/financeiro/lancamentos?${params}`",
+    "options": "{ signal }"
+  },
+  {
+    "file": "src/modules/financeiro/api.ts",
+    "line": 60,
+    "client": "request",
+    "path": "\"/financeiro/lancamentos\"",
+    "options": "{\n        method: \"POST\",\n        headers: { \"Idempotency-Key\": key },\n        body: JSON.stringify(entry),\n      }"
+  },
+  {
+    "file": "src/modules/financeiro/components/EntryTable.tsx",
+    "line": 58,
+    "client": "download",
+    "path": "\"/financeiro/lotes/exportar\"",
+    "options": "`selecionados.${kind}`"
+  },
+  {
+    "file": "src/modules/financeiro/components/EntryTable.tsx",
+    "line": 62,
+    "client": "request",
+    "path": "kind === \"approve\"\n          ? `/governanca/aprovar/cash/${id}`\n          : \"/financeiro/lotes/baixar\"",
+    "options": "{\n          method: \"POST\",\n          ...(kind === \"approve\" ? {} : { body: JSON.stringify(body) }),\n        }"
+  },
+  {
+    "file": "src/modules/financeiro/components/ExportButtons.tsx",
+    "line": 20,
+    "client": "authenticatedFetch",
+    "path": "`/api/v1${path}`",
+    "options": "{\n    method: body ? \"POST\" : \"GET\",\n    body: body ? JSON.stringify(body) : null,\n  }"
+  },
+  {
+    "file": "src/modules/financeiro/components/ExportButtons.tsx",
+    "line": 51,
+    "client": "request",
+    "path": "\"/financeiro/exportacoes\""
+  },
+  {
+    "file": "src/modules/financeiro/components/ExportButtons.tsx",
+    "line": 60,
+    "client": "request",
+    "path": "`/financeiro/exportacoes/${id}`"
+  },
+  {
+    "file": "src/modules/financeiro/components/ExportButtons.tsx",
+    "line": 70,
+    "client": "request",
+    "path": "`/financeiro/exportacoes/pdf?${queryString(filters)}`",
+    "options": "{\n        method: \"POST\",\n      }"
+  },
+  {
+    "file": "src/modules/financeiro/components/ExportButtons.tsx",
+    "line": 81,
+    "client": "download",
+    "path": "path",
+    "options": "name"
+  },
+  {
+    "file": "src/modules/financeiro/components/NewEntryModal.tsx",
+    "line": 33,
+    "client": "request",
+    "path": "\"/financeiro/centros-custo\""
+  },
+  {
+    "file": "src/modules/identity/hooks/use-login.ts",
+    "line": 9,
+    "client": "request",
+    "path": "\"/identity/auth/login\"",
+    "options": "{ method: \"POST\", body: JSON.stringify(input) }"
+  },
+  {
+    "file": "src/modules/identity/pages/DashboardPage.tsx",
+    "line": 79,
+    "client": "request",
+    "path": "\"/identity/dashboard\"",
+    "options": "{ signal }"
+  },
+  {
+    "file": "src/modules/identity/pages/DashboardPage.tsx",
+    "line": 85,
+    "client": "request",
+    "path": "\"/identity/auth/logout\"",
+    "options": "{ method: \"POST\" }"
+  },
+  {
+    "file": "src/modules/integration/BankingPage.tsx",
+    "line": 36,
+    "client": "request",
+    "path": "`/financeiro/conciliacao/movimentos?source=${source}&page=${page}`",
+    "options": "{ signal }"
+  },
+  {
+    "file": "src/modules/integration/BankingPage.tsx",
+    "line": 47,
+    "client": "request",
+    "path": "\"/financeiro/conciliacao/importar\"",
+    "options": "{\n        method: \"POST\",\n        body: JSON.stringify(body),\n      }"
+  },
+  {
+    "file": "src/modules/integration/BankingPage.tsx",
+    "line": 58,
+    "client": "request",
+    "path": "\"/financeiro/conciliacao/simular\"",
+    "options": "{\n        method: \"POST\",\n        body: JSON.stringify({ reference }),\n      }"
+  },
+  {
+    "file": "src/modules/integration/BankingPage.tsx",
+    "line": 74,
+    "client": "request",
+    "path": "`/financeiro/conciliacao/movimentos/${selected!.id}/candidatos`"
+  },
+  {
+    "file": "src/modules/integration/BankingPage.tsx",
+    "line": 80,
+    "client": "request",
+    "path": "`/financeiro/conciliacao/movimentos/${selected!.id}/conciliar`",
+    "options": "{\n        method: \"POST\",\n        body: JSON.stringify({ cash_entry_id: cash }),\n      }"
+  },
+  {
+    "file": "src/modules/integration/CRMPage.tsx",
+    "line": 60,
+    "client": "request",
+    "path": "`/crm/clientes?source=${source}&q=${encodeURIComponent(q)}&page=${page}&page_size=50`",
+    "options": "{ signal }"
+  },
+  {
+    "file": "src/modules/integration/CRMPage.tsx",
+    "line": 68,
+    "client": "request",
+    "path": "`/crm/oportunidades?source=${source}&page=${pipelinePage}`",
+    "options": "{ signal }"
+  },
+  {
+    "file": "src/modules/integration/CRMPage.tsx",
+    "line": 79,
+    "client": "request",
+    "path": "`/crm/oportunidades/${row.id}/${target === \"fechado\" ? \"converter\" : \"etapa\"}`",
+    "options": "{\n          method: target === \"fechado\" ? \"POST\" : \"PATCH\",\n          body: JSON.stringify({\n            version: row.version,\n            ...(target !== \"fechado\" ? { stage: target } : {}),\n          }),\n        }"
+  },
+  {
+    "file": "src/modules/operations/CreateDialog.tsx",
+    "line": 41,
+    "client": "request",
+    "path": "`/compras/fornecedores?q=${encodeURIComponent(supplierName)}`"
+  },
+  {
+    "file": "src/modules/operations/CreateDialog.tsx",
+    "line": 49,
+    "client": "request",
+    "path": "`/crm/clientes?source=real&page_size=100&q=${encodeURIComponent(customerSearch)}`"
+  },
+  {
+    "file": "src/modules/operations/CreateDialog.tsx",
+    "line": 63,
+    "client": "request",
+    "path": "`/estoque/produtos?source=real&page_size=100&q=${encodeURIComponent(productSearch)}`"
+  },
+  {
+    "file": "src/modules/operations/CreateDialog.tsx",
+    "line": 71,
+    "client": "request",
+    "path": "crm\n          ? \"/crm/oportunidades\"\n          : `/${module}/${stock ? \"produtos\" : \"pedidos\"}`",
+    "options": "{\n          method: \"POST\",\n          headers: { \"Idempotency-Key\": key },\n          body: JSON.stringify(body),\n        }"
+  },
+  {
+    "file": "src/modules/operations/OperationsPage.tsx",
+    "line": 132,
+    "client": "request",
+    "path": "`/${module}/${stock ? \"produtos\" : \"pedidos\"}?${params}`",
+    "options": "{\n        signal,\n      }"
+  },
+  {
+    "file": "src/modules/operations/OperationsPage.tsx",
+    "line": 144,
+    "client": "download",
+    "path": "`/${module}/exportar?${params}&format=${format}`",
+    "options": "`${module}.${format}`"
+  },
+  {
+    "file": "src/modules/operations/OperationsPage.tsx",
+    "line": 151,
+    "client": "request",
+    "path": "`/governanca/aprovar/purchase/${id}`",
+    "options": "{ method: \"POST\" }"
+  },
+  {
+    "file": "src/modules/operations/OperationsPage.tsx",
+    "line": 156,
+    "client": "request",
+    "path": "`/${module}/pedidos/${id}/concluir`",
+    "options": "{ method: \"POST\" }"
+  },
+  {
+    "file": "src/modules/operations/OperationsPage.tsx",
+    "line": 169,
+    "client": "request",
+    "path": "`/${module}/pedidos/${id}/cancelar`",
+    "options": "{ method: \"POST\" }"
+  },
+  {
+    "file": "src/modules/operations/OperationsPage.tsx",
+    "line": 185,
+    "client": "request",
+    "path": "`/${module}/pedidos/${orderId}`"
+  },
+  {
+    "file": "src/modules/operations/OperationsPage.tsx",
+    "line": 647,
+    "client": "request",
+    "path": "`/estoque/produtos/${product.id}/movimentos?page=${page}`"
+  },
+  {
+    "file": "src/modules/operations/OperationsPage.tsx",
+    "line": 654,
+    "client": "request",
+    "path": "`/estoque/produtos/${product.id}/movimentos`",
+    "options": "{\n        method: \"POST\",\n        headers: { \"Idempotency-Key\": key },\n        body: JSON.stringify(body),\n      }"
+  },
+  {
+    "file": "src/shared/api/client.ts",
+    "line": 16,
+    "client": "authenticatedFetch",
+    "path": "`/api/v1${path}`",
+    "options": "options"
+  },
+  {
+    "file": "src/shared/api/client.ts",
+    "line": 17,
+    "client": "fetch",
+    "path": "`/api/v1${path}`",
+    "options": "{\n        ...options,\n        credentials: \"same-origin\",\n        cache: \"no-store\",\n        headers: { \"Content-Type\": \"application/json\", ...options.headers },\n      }"
+  },
+  {
+    "file": "src/shared/api/client.ts",
+    "line": 63,
+    "client": "fetch",
+    "path": "\"/api/v1/identity/auth/refresh\"",
+    "options": "{\n      method: \"POST\",\n      credentials: \"same-origin\",\n      cache: \"no-store\",\n      headers: { \"X-ERP-Refresh\": \"1\" },\n    }"
+  },
+  {
+    "file": "src/shared/api/client.ts",
+    "line": 110,
+    "client": "fetch",
+    "path": "url",
+    "options": "{\n      ...options,\n      headers,\n      credentials: \"same-origin\",\n      cache: \"no-store\",\n    }"
+  },
+  {
+    "file": "src/shared/components/Editor.tsx",
+    "line": 33,
+    "client": "request",
+    "path": "path",
+    "options": "{\n        method,\n        headers: { \"Idempotency-Key\": requestKey },\n        body: JSON.stringify(value),\n      }"
+  },
+  {
+    "file": "src/shared/components/NotificationCenter.tsx",
+    "line": 18,
+    "client": "request",
+    "path": "\"/notificacoes\"",
+    "options": "{ signal }"
+  }
+]

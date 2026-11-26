@@ -1,0 +1,225 @@
+{
+  "/api/v1/ativos": [
+    "get",
+    "post"
+  ],
+  "/api/v1/ativos/responsaveis": [
+    "get"
+  ],
+  "/api/v1/ativos/{identity}": [
+    "delete"
+  ],
+  "/api/v1/ativos/{identity}/manutencoes": [
+    "get",
+    "post"
+  ],
+  "/api/v1/ativos/{identity}/posse": [
+    "put"
+  ],
+  "/api/v1/bi/orcamento": [
+    "put"
+  ],
+  "/api/v1/bi/overview": [
+    "get"
+  ],
+  "/api/v1/bi/vendas": [
+    "get"
+  ],
+  "/api/v1/cockpit": [
+    "get"
+  ],
+  "/api/v1/compras/exportar": [
+    "get"
+  ],
+  "/api/v1/compras/fornecedores": [
+    "get"
+  ],
+  "/api/v1/compras/pedidos": [
+    "get",
+    "post"
+  ],
+  "/api/v1/compras/pedidos/{order_id}": [
+    "get"
+  ],
+  "/api/v1/compras/pedidos/{order_id}/cancelar": [
+    "post"
+  ],
+  "/api/v1/compras/pedidos/{order_id}/concluir": [
+    "post"
+  ],
+  "/api/v1/crm/clientes": [
+    "get",
+    "post"
+  ],
+  "/api/v1/crm/clientes/{identity}": [
+    "put"
+  ],
+  "/api/v1/crm/oportunidades": [
+    "get",
+    "post"
+  ],
+  "/api/v1/crm/oportunidades/{identity}/converter": [
+    "post"
+  ],
+  "/api/v1/crm/oportunidades/{identity}/etapa": [
+    "patch"
+  ],
+  "/api/v1/crm/oportunidades/{identity}/revisar": [
+    "patch"
+  ],
+  "/api/v1/estoque/exportar": [
+    "get"
+  ],
+  "/api/v1/estoque/produtos": [
+    "get",
+    "post"
+  ],
+  "/api/v1/estoque/produtos/{product_id}/movimentos": [
+    "get",
+    "post"
+  ],
+  "/api/v1/financeiro/centros-custo": [
+    "get"
+  ],
+  "/api/v1/financeiro/conciliacao/importar": [
+    "post"
+  ],
+  "/api/v1/financeiro/conciliacao/movimentos": [
+    "get"
+  ],
+  "/api/v1/financeiro/conciliacao/movimentos/{identity}/candidatos": [
+    "get"
+  ],
+  "/api/v1/financeiro/conciliacao/movimentos/{identity}/conciliar": [
+    "post"
+  ],
+  "/api/v1/financeiro/conciliacao/simular": [
+    "post"
+  ],
+  "/api/v1/financeiro/exportacoes": [
+    "get"
+  ],
+  "/api/v1/financeiro/exportacoes/pdf": [
+    "post"
+  ],
+  "/api/v1/financeiro/exportacoes/planilha": [
+    "get"
+  ],
+  "/api/v1/financeiro/exportacoes/{job_id}": [
+    "get"
+  ],
+  "/api/v1/financeiro/exportacoes/{job_id}/download": [
+    "get"
+  ],
+  "/api/v1/financeiro/fluxo-caixa": [
+    "get"
+  ],
+  "/api/v1/financeiro/lancamentos": [
+    "get",
+    "post"
+  ],
+  "/api/v1/financeiro/lancamentos/{entry_id}": [
+    "get"
+  ],
+  "/api/v1/financeiro/lotes/baixar": [
+    "post"
+  ],
+  "/api/v1/financeiro/lotes/exportar": [
+    "post"
+  ],
+  "/api/v1/fiscal/notas": [
+    "get",
+    "post"
+  ],
+  "/api/v1/fiscal/notas/{identity}/cancelar": [
+    "post"
+  ],
+  "/api/v1/fiscal/origens": [
+    "get"
+  ],
+  "/api/v1/governanca/aprovar/{resource}/{identity}": [
+    "post"
+  ],
+  "/api/v1/governanca/auditoria": [
+    "get"
+  ],
+  "/api/v1/governanca/usuarios": [
+    "get"
+  ],
+  "/api/v1/governanca/usuarios/{user_id}/alcada": [
+    "put"
+  ],
+  "/api/v1/identity/auth/login": [
+    "post"
+  ],
+  "/api/v1/identity/auth/logout": [
+    "post"
+  ],
+  "/api/v1/identity/auth/refresh": [
+    "post"
+  ],
+  "/api/v1/identity/dashboard": [
+    "get"
+  ],
+  "/api/v1/identity/me": [
+    "get"
+  ],
+  "/api/v1/notificacoes": [
+    "get"
+  ],
+  "/api/v1/projetos": [
+    "get",
+    "post"
+  ],
+  "/api/v1/projetos/{identity}": [
+    "delete"
+  ],
+  "/api/v1/projetos/{identity}/entregas": [
+    "post"
+  ],
+  "/api/v1/projetos/{identity}/historico": [
+    "get"
+  ],
+  "/api/v1/projetos/{identity}/horas": [
+    "post"
+  ],
+  "/api/v1/projetos/{identity}/status": [
+    "patch"
+  ],
+  "/api/v1/rh/colaboradores": [
+    "get",
+    "post"
+  ],
+  "/api/v1/rh/colaboradores/{identity}": [
+    "put"
+  ],
+  "/api/v1/rh/folhas": [
+    "get",
+    "post"
+  ],
+  "/api/v1/rh/folhas/{identity}/provisionar": [
+    "post"
+  ],
+  "/api/v1/vendas/exportar": [
+    "get"
+  ],
+  "/api/v1/vendas/pedidos": [
+    "get",
+    "post"
+  ],
+  "/api/v1/vendas/pedidos/{order_id}": [
+    "get"
+  ],
+  "/api/v1/vendas/pedidos/{order_id}/cancelar": [
+    "post"
+  ],
+  "/api/v1/vendas/pedidos/{order_id}/concluir": [
+    "post"
+  ],
+  "/health/live": [
+    "get"
+  ],
+  "/health/ready": [
+    "get"
+  ]
+}
